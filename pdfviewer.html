@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>View PDF</title>
+        <link rel="stylesheet" href="appearance.css"/>
+    </head>
+
+    <body>
+        <a href="index.html">← Back to Exams</a>
+        
+        <iframe
+            id="pdf-viewer"
+            width="90%"
+            height="600"
+            style="border: 1px solid #243244; border-radius: 12px;"
+        ></iframe>
+
+        <script>
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const pdfPath = urlParams.get('pdf');
+            
+            document.getElementById('pdf-viewer').src = pdfPath;
+        </script>
+        
+    </body>
+
+</html>
