@@ -1,1 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subjects</title>
+  <link rel="stylesheet" href="appearance.css">
 
+  <style>
+    .wrap { max-width: 900px; margin: 40px auto; padding: 0 16px; font-family: Arial, sans-serif; }
+    .top { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .btn {
+      display: block; text-align: center; padding: 16px 18px;
+      border: 1px solid #243244; border-radius: 12px;
+      text-decoration: none; color: #243244; font-weight: 700; background: #fff;
+    }
+    .btn:hover { background:#243244; color:#fff; }
+    .link { color:#243244; text-decoration:none; font-weight:700; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="link" href="index.html">← Home</a>
+      <h1 id="title" style="margin:0;">Subjects</h1>
+    </div>
+
+    <div class="grid" id="subjects"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const branch = params.get("branch"); // s-pc, s-svt, s-maths
+
+    const branchLabels = {
+      "s-pc": "S-PC",
+      "s-svt": "S-SVT",
+      "s-maths": "S.Maths"
+    };
+
+    const subjects = [
+      { id: "maths", label: "Maths" },
+      { id: "physique", label: "Physique" },
+      { id: "svt", label: "SVT" },
+      { id: "english", label: "English" },
+      { id: "philosophie", label: "Philosophie" }
+    ];
+
+    document.getElementById("title").textContent = branchLabels[branch]
+      ? `${branchLabels[branch]} — Subjects`
+      : "Subjects";
+
+    const container = document.getElementById("subjects");
+
+    if (!branchLabels[branch]) {
+      container.innerHTML = `<p>Missing/invalid branch. Go back to <a href="index.html">home</a>.</p>`;
+    } else {
+      container.innerHTML = subjects.map(s =>
+        `<a class="btn" href="subject.html?branch=${encodeURIComponent(branch)}&subject=${encodeURIComponent(s.id)}">${s.label}</a>`
+      ).join("");
+    }
+  </script>
+</body>
+</html>
