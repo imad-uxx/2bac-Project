@@ -8,21 +8,18 @@
 
   <style>
   :root{
-    /* OneUI-ish dark palette */
-    --bg0: #0b0f17;
-    --bg1: #0f1623;
-    --card: rgba(255,255,255,0.06);
-    --card2: rgba(255,255,255,0.08);
+    --bg: #0b0f16;
+    --surface: rgba(255,255,255,0.06);
+    --surface2: rgba(255,255,255,0.08);
     --border: rgba(255,255,255,0.10);
 
     --text: rgba(255,255,255,0.92);
     --muted: rgba(255,255,255,0.62);
 
-    --accent: #7cb6ff;       /* change this if you want another accent */
-    --accent2: #7dffa8;      /* subtle secondary glow */
+    --accent: #7cb6ff; /* calm blue */
   }
 
-  * { box-sizing: border-box; }
+  *{ box-sizing: border-box; }
 
   body{
     margin: 0;
@@ -30,11 +27,8 @@
     color: var(--text);
     min-height: 100vh;
 
-    /* calm “comforting” background */
-    background:
-      radial-gradient(1000px 600px at 20% 10%, rgba(124,182,255,0.18), transparent 60%),
-      radial-gradient(900px 520px at 85% 25%, rgba(125,255,168,0.10), transparent 60%),
-      linear-gradient(180deg, var(--bg0), var(--bg1));
+    /* Simple, no colored gradients */
+    background: linear-gradient(180deg, #0b0f16 0%, #0a1220 100%);
   }
 
   .wrap{
@@ -43,16 +37,12 @@
     padding: 44px 18px 64px;
   }
 
-  /* Big title like OneUI (large, roomy) */
   .hero{
     border-radius: 22px;
     padding: 22px 20px;
-    background: linear-gradient(180deg, var(--card2), var(--card));
+    background: var(--surface2);
     border: 1px solid var(--border);
-    box-shadow:
-      0 20px 60px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
   }
 
   .hero-title{
@@ -79,10 +69,8 @@
   .timebox{
     border-radius: 18px;
     padding: 14px 12px;
-    background: rgba(0,0,0,0.18);
-    border: 1px solid rgba(255,255,255,0.10);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.05);
+    background: var(--surface);
+    border: 1px solid var(--border);
     text-align: center;
   }
 
@@ -92,7 +80,6 @@
     font-size: clamp(22px, 3.2vw, 36px);
     line-height: 1;
     color: rgba(255,255,255,0.95);
-    text-shadow: 0 8px 22px rgba(0,0,0,0.55);
   }
 
   .timebox .label{
@@ -119,7 +106,6 @@
     gap: 12px;
   }
 
-  /* “Comforting game card” buttons */
   .btn{
     display: block;
     text-align: center;
@@ -129,24 +115,17 @@
     font-weight: 850;
     color: var(--text);
 
-    background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
-    border: 1px solid rgba(255,255,255,0.12);
-
-    box-shadow:
-      0 14px 34px rgba(0,0,0,0.35),
-      inset 0 1px 0 rgba(255,255,255,0.05);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 
     transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
   }
 
   .btn:hover{
     transform: translateY(-2px);
-    border-color: rgba(124,182,255,0.35);
-    background: linear-gradient(180deg, rgba(124,182,255,0.14), rgba(255,255,255,0.06));
-  }
-
-  .btn:active{
-    transform: translateY(0px);
+    border-color: rgba(124,182,255,0.45);
+    background: rgba(255,255,255,0.10);
   }
 
   .btn:focus-visible{
