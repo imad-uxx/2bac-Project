@@ -38,4 +38,152 @@
       border-radius: 18px;
       background: var(--card);
       border: 1px solid var(--border);
-      box-shadow: 0 
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-title{
+      margin: 0 0 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+    }
+
+    .hero-sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: clamp(14px, 2vw, 18px);
+    }
+
+    .countdown{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .timebox{
+      border-radius: 14px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .timebox .num{
+      display:block;
+      font-weight: 900;
+      color: #fff;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1;
+    }
+
+    .timebox .label{
+      display:block;
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title{
+      margin: 28px 0 14px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .btn{
+      display: block;
+      text-align: center;
+      padding: 16px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      color: #fff;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    @media (max-width: 520px){
+      .countdown{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1 class="hero-title">Examen National 2026</h1>
+      <p class="hero-sub">Compte à rebours avant la date de l’examen</p>
+
+      <div class="countdown" aria-label="Countdown">
+        <div class="timebox"><span class="num" id="cd-days">0</span><span class="label">Days</span></div>
+        <div class="timebox"><span class="num" id="cd-hours">0</span><span class="label">Hours</span></div>
+        <div class="timebox"><span class="num" id="cd-mins">0</span><span class="label">Minutes</span></div>
+        <div class="timebox"><span class="num" id="cd-secs">0</span><span class="label">Seconds</span></div>
+      </div>
+    </div>
+
+    <div class="section-title">Choose your section</div>
+
+    <div class="grid">
+      <a class="btn" href="majors/s.pc/s-pc.html">S-PC</a>
+      <a class="btn" href="majors/s.svt/s-svt.html">S-SVT</a>
+      <a class="btn" href="majors/s.maths/s-maths.html">S.Maths</a>
+    </div>
+  </div>
+
+  <script>
+    // Set your target exam date/time here:
+    // Example: "2026-06-15T00:00:00" (local time for each visitor)
+    const target = new Date("2026-06-15T00:00:00");
+
+    const elDays = document.getElementById("cd-days");
+    const elHours = document.getElementById("cd-hours");
+    const elMins = document.getElementById("cd-mins");
+    const elSecs = document.getElementById("cd-secs");
+
+    function updateCountdown() {
+      const diff = target - new Date();
+
+      if (diff <= 0) {
+        elDays.textContent = "0";
+        elHours.textContent = "0";
+        elMins.textContent = "0";
+        elSecs.textContent = "0";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      elDays.textContent = days;
+      elHours.textContent = hours;
+      elMins.textContent = minutes;
+      elSecs.textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
