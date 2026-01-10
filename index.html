@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Examen National 2026</title>
   <link rel="stylesheet" href="appearance.css">
-</head>
 </head>
 
 <body>
   <div class="wrap">
     <div class="hero">
       <h1 class="hero-title">Examen National 2026</h1>
-     
+      <p class="hero-sub">Compte à rebours (heure du Maroc)</p>
 
       <div class="countdown" aria-label="Countdown">
         <div class="timebox"><span class="num" id="cd-days">0</span><span class="label">Days</span></div>
@@ -23,12 +21,12 @@
       </div>
     </div>
 
-    <div class="section-title">Choisis ta filliere</div>
+    <div class="section-title">Choisis ta filière</div>
 
     <div class="grid">
       <a class="btn" href="majors/s.pc/s-pc.html">S-PC</a>
       <a class="btn" href="majors/s.svt/s-svt.html">S-SVT</a>
-      <a class="btn" href="majors/s.maths/s-maths.html">S.Maths</a>
+      <a class="btn" href="majors/s.maths/s-maths.html">S-Maths</a>
     </div>
   </div>
 
@@ -42,7 +40,6 @@
     const elSecs = document.getElementById("cd-secs");
 
     function updateCountdown() {
-      // If date is invalid, show ERR
       if (isNaN(target.getTime())) {
         elDays.textContent = "ERR";
         elHours.textContent = "ERR";
