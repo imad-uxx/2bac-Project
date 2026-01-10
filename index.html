@@ -3,58 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Exam Library</title>
+  <title>Examen National 2026</title>
   <link rel="stylesheet" href="appearance.css">
 
   <style>
-    .wrap { max-width: 900px; margin: 40px auto; padding: 0 16px; font-family: Arial, sans-serif; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .btn {
-      display: block; text-align: center; padding: 16px 18px;
-      border: 1px solid #243244; border-radius: 12px;
-      text-decoration: none; color: #243244; font-weight: 700; background: #fff;
-    }
-    .btn:hover { background:#243244; color:#fff; }
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-    <h2>Countdown</h2>
-    <div id="countdown" style="font-size: 24px; font-weight: 700;"></div>
-
-    <h1>Choose your section</h1>
-
-    <div class="grid">
-      <a class="btn" href="majors/s.pc/s-pc.html">S-PC</a>
-      <a class="btn" href="majors/s.svt/s-svt.html">S-SVT</a>
-      <a class="btn" href="majors/s.maths/s-maths.html">S.Maths</a>
-    </div>
-  </div>
-
-  <script>
-    const target = new Date("2026-06-15T00:00:00");
-    const el = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const diff = target - new Date();
-
-      if (diff <= 0) {
-        el.textContent = "It’s time!";
-        return;
-      }
-
-      const totalSeconds = Math.floor(diff / 1000);
-      const days = Math.floor(totalSeconds / (3600 * 24));
-      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    :root{
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.18);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(59,130,246,0.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, rgba(34,197,94,0.22), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 44px 18px 60px;
+    }
+
+    .hero{
+      padding: 26px 22px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 
