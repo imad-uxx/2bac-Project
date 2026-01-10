@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,7 +130,7 @@
   <div class="wrap">
     <div class="hero">
       <h1 class="hero-title">Examen National 2026</h1>
-      <p class="hero-sub">Compte à rebours avant la date de l’examen</p>
+     
 
       <div class="countdown" aria-label="Countdown">
         <div class="timebox"><span class="num" id="cd-days">0</span><span class="label">Days</span></div>
@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <div class="section-title">Choose your section</div>
+    <div class="section-title">Choisis ta filliere</div>
 
     <div class="grid">
       <a class="btn" href="majors/s.pc/s-pc.html">S-PC</a>
@@ -150,9 +150,8 @@
   </div>
 
   <script>
-    // Set your target exam date/time here:
-    // Example: "2026-06-15T00:00:00" (local time for each visitor)
-    const target = new Date("2026-06-14T08:00:00+01:00"); Morocco time (UTC+1)
+    // Target: 2026-06-15 08:00 Morocco time (UTC+1)
+    const target = new Date("2026-06-15T08:00:00+01:00");
 
     const elDays = document.getElementById("cd-days");
     const elHours = document.getElementById("cd-hours");
@@ -160,7 +159,16 @@
     const elSecs = document.getElementById("cd-secs");
 
     function updateCountdown() {
-      const diff = target - new Date();
+      // If date is invalid, show ERR
+      if (isNaN(target.getTime())) {
+        elDays.textContent = "ERR";
+        elHours.textContent = "ERR";
+        elMins.textContent = "ERR";
+        elSecs.textContent = "ERR";
+        return;
+      }
+
+      const diff = target.getTime() - Date.now();
 
       if (diff <= 0) {
         elDays.textContent = "0";
