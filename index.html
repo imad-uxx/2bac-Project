@@ -20,6 +20,9 @@
 
 <body>
   <div class="wrap">
+    <h2>Countdown</h2>
+    <div id="countdown" style="font-size: 24px; font-weight: 700;"></div>
+
     <h1>Choose your section</h1>
 
     <div class="grid">
@@ -28,5 +31,30 @@
       <a class="btn" href="majors/s.maths/s-maths.html">S.Maths</a>
     </div>
   </div>
+
+  <script>
+    const target = new Date("2026-06-15T00:00:00");
+    const el = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const diff = target - new Date();
+
+      if (diff <= 0) {
+        el.textContent = "It’s time!";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
