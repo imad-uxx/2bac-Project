@@ -1,2 +1,1 @@
-# 2bac-Project
-This is the porject that will include everything related to the website that helps high school students find relevant past papers and organize their studying properly.
+This is a simple website that helps students practice past national exams and familiarize themselves with the format, while serving as a platform to mark exams as done and time themselves, and try to improve each time. 
