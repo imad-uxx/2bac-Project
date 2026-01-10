@@ -30,6 +30,8 @@ body{
   font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--text);
   background: var(--bg-bottom);
+  padding: 20px;
+  overflow-x: hidden;
 }
 
 /* Headings: slightly “game” look */
@@ -94,6 +96,8 @@ a{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  width: 100%;
+  max-width: 600px;
 }
 
 /* Button style */
