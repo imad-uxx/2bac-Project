@@ -8,48 +8,66 @@
 
   <style>
   :root{
-    --bg: #f6f7fb;
-    --card: #ffffff;
-    --text: #0f172a;
-    --muted: #64748b;
-    --border: #e5e7eb;
-    --accent: #243244;
+    /* OneUI-ish dark palette */
+    --bg0: #0b0f17;
+    --bg1: #0f1623;
+    --card: rgba(255,255,255,0.06);
+    --card2: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,0.10);
+
+    --text: rgba(255,255,255,0.92);
+    --muted: rgba(255,255,255,0.62);
+
+    --accent: #7cb6ff;       /* change this if you want another accent */
+    --accent2: #7dffa8;      /* subtle secondary glow */
   }
+
+  * { box-sizing: border-box; }
 
   body{
     margin: 0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: var(--bg);
     color: var(--text);
+    min-height: 100vh;
+
+    /* calm “comforting” background */
+    background:
+      radial-gradient(1000px 600px at 20% 10%, rgba(124,182,255,0.18), transparent 60%),
+      radial-gradient(900px 520px at 85% 25%, rgba(125,255,168,0.10), transparent 60%),
+      linear-gradient(180deg, var(--bg0), var(--bg1));
   }
 
   .wrap{
     max-width: 980px;
     margin: 0 auto;
-    padding: 48px 18px 64px;
+    padding: 44px 18px 64px;
   }
 
+  /* Big title like OneUI (large, roomy) */
   .hero{
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 22px;
     padding: 22px 20px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    background: linear-gradient(180deg, var(--card2), var(--card));
+    border: 1px solid var(--border);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
   }
 
   .hero-title{
     margin: 0 0 6px;
-    font-weight: 800;
-    letter-spacing: -0.4px;
-    font-size: clamp(26px, 3.6vw, 40px);
-    color: var(--accent);
+    font-weight: 850;
+    letter-spacing: -0.5px;
+    font-size: clamp(28px, 3.8vw, 44px);
+    line-height: 1.1;
   }
 
   .hero-sub{
-    margin: 0 0 16px;
+    margin: 0 0 18px;
     color: var(--muted);
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .countdown{
@@ -59,37 +77,40 @@
   }
 
   .timebox{
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: #fbfbfd;
-    padding: 14px 10px;
+    border-radius: 18px;
+    padding: 14px 12px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.05);
     text-align: center;
   }
 
   .timebox .num{
     display: block;
-    font-weight: 800;
-    font-size: clamp(22px, 3.2vw, 34px);
-    line-height: 1.05;
-    color: var(--text);
+    font-weight: 900;
+    font-size: clamp(22px, 3.2vw, 36px);
+    line-height: 1;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 8px 22px rgba(0,0,0,0.55);
   }
 
   .timebox .label{
     display: block;
-    margin-top: 6px;
+    margin-top: 7px;
     font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.6px;
+    letter-spacing: 0.7px;
     text-transform: uppercase;
+    color: var(--muted);
   }
 
   .section-title{
-    margin: 24px 0 12px;
-    font-size: 14px;
-    font-weight: 700;
+    margin: 22px 0 12px;
     color: var(--muted);
+    font-weight: 800;
+    letter-spacing: 0.7px;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    font-size: 12px;
   }
 
   .grid{
@@ -98,27 +119,47 @@
     gap: 12px;
   }
 
+  /* “Comforting game card” buttons */
   .btn{
     display: block;
     text-align: center;
     padding: 14px 16px;
-    border-radius: 14px;
+    border-radius: 18px;
     text-decoration: none;
-    font-weight: 800;
-    color: var(--accent);
-    background: var(--card);
-    border: 1px solid var(--border);
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    font-weight: 850;
+    color: var(--text);
+
+    background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+      0 14px 34px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+
+    transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
   }
 
   .btn:hover{
-    background: #f2f4f7;
-    border-color: #d6dae1;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    border-color: rgba(124,182,255,0.35);
+    background: linear-gradient(180deg, rgba(124,182,255,0.14), rgba(255,255,255,0.06));
+  }
+
+  .btn:active{
+    transform: translateY(0px);
+  }
+
+  .btn:focus-visible{
+    outline: 2px solid rgba(124,182,255,0.75);
+    outline-offset: 3px;
   }
 
   @media (max-width: 520px){
     .countdown{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{ transition: none; }
   }
 </style>
 </head>
